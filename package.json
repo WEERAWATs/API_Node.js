@@ -1,7 +1,7 @@
 {
   "name": "api",
   "version": "1.0.0",
-  "description": "This example is so cool.",
+  "description": "This api is so cool.",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
