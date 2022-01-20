@@ -28,10 +28,10 @@ app.get('/', (req, res) => {
 
 // connection to mysql database
 let conn = mysql.createConnection({
-    host: 'us-cdbr-east-03.cleardb.com',
-    user: 'beb780f018b871',
-    password: '185c712e',
-    database: 'heroku_9e045b6740aadd0'
+    host: 'i0rgccmrx3at3wv3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+    user: 'kyi9c5r2zsv952xg',
+    password: 'y52hb979209p8h8s',
+    database: 'fq0ylbj2q0cofeza'
 })
 
 // login
