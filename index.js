@@ -76,7 +76,7 @@ app.post('/register', async (req, res) => {
     }
 })
 
-// login
+// check username
 app.post('/check_username', (req, res) => {
     let username = req.body.username;
 
@@ -94,6 +94,22 @@ app.post('/check_username', (req, res) => {
         })
     }
 
+})
+
+// get products from category name
+app.get('/users', (req, res) => {
+    let name = req.body.name;
+    conn.query('SELECT p.* FROM tb_products as p INNER JOIN tb_category as c ON c.id_category = p.category WHERE c.name = ?',name, (error, result, fields) => {
+        if (error) throw error;
+
+        let message = "";
+        if (result === undefined || result.length == 0) {
+            message = "Users table is empty";
+        } else {
+            message = "Successfully retrieved all users";
+        }
+        return res.send({ error: false, data: result, message: message });
+    })
 })
 
 // -------------------------------------------------------------------------
