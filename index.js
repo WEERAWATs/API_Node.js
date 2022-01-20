@@ -4,6 +4,8 @@ let bodyParser = require('body-parser');
 let bcrypt = require('bcrypt');
 let mysql = require('mysql');
 
+let PORT = 8080;
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -869,6 +871,6 @@ app.get('/banks_th/:id', (req, res) => {
 // -------------------------------------------------------------------------
 
 // set port
-app.listen(3000, () => {
-    console.log('Node App is running on port 3000');
+app.listen(PORT, () => {
+    console.log(`Node App is running on port ${PORT}`);
 })
