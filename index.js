@@ -97,7 +97,7 @@ app.post('/check_username', (req, res) => {
 })
 
 // get products from category name
-app.get('/users', (req, res) => {
+app.post('/products/category', (req, res) => {
     let name = req.body.name;
     conn.query('SELECT p.* FROM tb_products as p INNER JOIN tb_category as c ON c.id_category = p.category WHERE c.name = ?',name, (error, result, fields) => {
         if (error) throw error;
