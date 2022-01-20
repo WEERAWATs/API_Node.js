@@ -4,7 +4,7 @@ let bodyParser = require('body-parser');
 let bcrypt = require('bcrypt');
 let mysql = require('mysql');
 
-let PORT = process.env.PORT || 8080;
+let PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
