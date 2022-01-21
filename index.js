@@ -119,15 +119,15 @@ app.post('/cart', (req, res) => {
     if (!uid) {
         return res.status(400).send({ error: true, message: "Error." });
     } else {
-        conn.query("SELECT p.id_product as pid, img as img,"+
-                        "p.name as pname , p.price as price,"+
-                        "c.qty as qty, c.id_cart as cid"+
-                    "FROM tb_cart as c"+
-                    "INNER JOIN tb_products as p"+
-                    "ON c.id_product = p.id_product"+
-                    "WHERE c.id_user = ? AND"+
-                            "p.qty > 0 AND p.qty >= c.qty"+
-                    "GROUP BY pid"+
+        conn.query("SELECT p.id_product as pid, img as img, "+
+                        "p.name as pname , p.price as price, "+
+                        "c.qty as qty, c.id_cart as cid "+
+                    "FROM tb_cart as c "+
+                    "INNER JOIN tb_products as p "+
+                    "ON c.id_product = p.id_product "+
+                    "WHERE c.id_user = ? AND "+
+                            "p.qty > 0 AND p.qty >= c.qty "+
+                    "GROUP BY pid "+
                     "ORDER BY id_cart DESC", uid ,(error, result, fields) => {
             if (error) throw error;
             
