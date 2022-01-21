@@ -112,6 +112,36 @@ app.post('/products/category', (req, res) => {
     })
 })
 
+// get cart from user
+app.post('/user/cart', (req, res) => {
+    let uid = req.body.uid;
+
+    if (!uid) {
+        return res.status(400).send({ error: true, message: "Error." });
+    } else {
+        conn.query("SELECT p.id_product as pid, img as img,"+
+                        "p.name as pname , p.price as price,"+
+                        "c.qty as qty, c.id_cart as cid"+
+                    "FROM tb_cart as c"+
+                    "INNER JOIN tb_products as p"+
+                    "ON c.id_product = p.id_product"+
+                    "WHERE c.id_user = ? AND"+
+                            "p.qty > 0 AND p.qty >= c.qty"+
+                    "GROUP BY pid"+
+                    "ORDER BY id_cart DESC", uid ,(error, result, fields) => {
+            if (error) throw error;
+            
+            let message = "";
+            if (result === undefined || result.length == 0) {
+                message = "Cart table is empty";
+            } else {
+                message = "Successfully retrieved all cart";
+            }
+            return res.send({ error: false, data: result, message: message });
+        })
+    }
+
+
 // -------------------------------------------------------------------------
 
 // retrieve all users
