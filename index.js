@@ -113,7 +113,7 @@ app.post('/products/category', (req, res) => {
 })
 
 // get cart from user
-app.post('/user/cart', (req, res) => {
+app.post('/cart', (req, res) => {
     let uid = req.body.uid;
 
     if (!uid) {
@@ -436,41 +436,41 @@ app.delete('/category', (req, res) => {
 
 // -------------------------------------------------------------------------
 
-// retrieve all cart
-app.get('/cart', (req, res) => {
-    conn.query('SELECT * FROM tb_cart', (error, result, fields) => {
-        if (error) throw error;
+// // retrieve all cart
+// app.get('/cart', (req, res) => {
+//     conn.query('SELECT * FROM tb_cart', (error, result, fields) => {
+//         if (error) throw error;
 
-        let message = ""
-        if (result === undefined || result.length == 0) {
-            message = "Cart table is empty";
-        } else {
-            message = "Successfully retrieved all cart";
-        }
-        return res.send({ error: false, data: result, message: message });
-    })
-})
+//         let message = ""
+//         if (result === undefined || result.length == 0) {
+//             message = "Cart table is empty";
+//         } else {
+//             message = "Successfully retrieved all cart";
+//         }
+//         return res.send({ error: false, data: result, message: message });
+//     })
+// })
 
-// retrieve one cart
-app.get('/cart/:id', (req, res) => {
-    let id = req.params.id;
+// // retrieve one cart
+// app.get('/cart/:id', (req, res) => {
+//     let id = req.params.id;
 
-    if (!id) {
-        return res.status(400).send({ error: true, message: "Please provide cart id." });
-    } else {
-        conn.query("SELECT * FROM tb_cart WHERE id_user = ?", id, (error, result, fields) => {
-            if (error) throw error;
+//     if (!id) {
+//         return res.status(400).send({ error: true, message: "Please provide cart id." });
+//     } else {
+//         conn.query("SELECT * FROM tb_cart WHERE id_user = ?", id, (error, result, fields) => {
+//             if (error) throw error;
 
-            let message = "";
-            if (result === undefined || result.length == 0) {
-                message = "cart not found";
-            } else {
-                message = "Successfully retrieved cart data";
-            }
-            return res.send({ error: false, data: result[0], message: message });
-        })
-    }
-})
+//             let message = "";
+//             if (result === undefined || result.length == 0) {
+//                 message = "cart not found";
+//             } else {
+//                 message = "Successfully retrieved cart data";
+//             }
+//             return res.send({ error: false, data: result[0], message: message });
+//         })
+//     }
+// })
 
 // aad a new cart
 app.post('/cart', (req, res) => {
