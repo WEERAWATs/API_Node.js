@@ -140,7 +140,7 @@ app.post('/cart', (req, res) => {
             return res.send({ error: false, data: result, message: message });
         })
     }
-}
+})
 
 // -------------------------------------------------------------------------
 
