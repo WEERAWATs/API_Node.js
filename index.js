@@ -113,7 +113,7 @@ app.post('/products/category', (req, res) => {
 })
 
 // get cart from user
-app.post('/cart', (req, res) => {
+app.post('/user/cart', (req, res) => {
     let uid = req.body.uid;
 
     if (!uid) {
