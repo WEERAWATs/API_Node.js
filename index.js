@@ -508,8 +508,8 @@ app.put('/cart', (req, res) => {
 })
 
 // delete cart
-app.delete('/cart', (req, res) => {
-    let id = req.body.id;
+app.delete('/cart/:id', (req, res) => {
+    let id = req.params.id;
 
     if (!id) {
         return res.status(400).send({ error: true, message: "Please provide cart id." });
